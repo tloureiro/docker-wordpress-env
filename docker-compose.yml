@@ -1,0 +1,25 @@
+---
+version: '2'
+
+services:
+
+  db:
+    image: mariadb
+    environment: 
+      MYSQL_USERNAME: dbuser
+      MYSQL_PASSWORD: dbpass
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: wordpress
+    volumes:   
+      - ./mysql:/var/lib/mysql
+      - ./dump:/dump
+  
+  wordpress:
+    depends_on: 
+      - db
+    image: wordpress-env
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./wordpress:/var/www/html

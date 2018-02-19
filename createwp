@@ -1,0 +1,3 @@
+wp core download
+wp config create --dbhost=db --dbname=wordpress --dbuser=root --dbpass=rootpass --extra-php="define( 'FS_METHOD', 'direct' );";
+wp core install --url=https://localhost --title=Title --admin_user=admin --admin_password=admin --admin_email=o@o.com
