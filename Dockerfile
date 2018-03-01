@@ -3,7 +3,7 @@ FROM php:apache
 RUN apt-get update
 RUN apt-get install -y ssl-cert nano mysql-client less
 
-RUN a2enmod ssl
+RUN a2enmod ssl rewrite
 
 RUN make-ssl-cert generate-default-snakeoil --force-overwrite
 RUN docker-php-ext-install json mbstring mysqli opcache pdo pdo_mysql
