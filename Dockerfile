@@ -23,6 +23,10 @@ RUN chmod +x /usr/bin/createwp
 RUN rm -f /etc/apache2/sites-enabled/*
 VOLUME /etc/apache2/sites-enabled/
 
+#Xdebug
+RUN pecl install xdebug && docker-php-ext-enable xdebug
+ADD config/xdebug.ini /usr/local/etc/php/conf.d/user-xdebug.ini
+
 # prep init
 COPY init.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/init.sh
