@@ -1,7 +1,7 @@
 FROM php:apache
 
 RUN apt-get update
-RUN apt-get install -y ssl-cert nano mysql-client less
+RUN apt-get install -y ssl-cert nano default-mysql-client libonig-dev less
 
 RUN a2enmod ssl rewrite
 
