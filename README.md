@@ -1,5 +1,6 @@
 # vscode xdebug config
 
+```json
 {
     "name": "Listen for Xdebug",
     "type": "php",
@@ -9,3 +10,4 @@
         "/var/www/html": "${workspaceFolder}/",
     },
 },
+```
