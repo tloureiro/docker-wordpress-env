@@ -6,7 +6,11 @@ RUN apt-get install -y ssl-cert nano default-mysql-client libonig-dev less
 RUN a2enmod ssl rewrite
 
 RUN make-ssl-cert generate-default-snakeoil --force-overwrite
-RUN docker-php-ext-install json mbstring mysqli opcache pdo pdo_mysql
+RUN docker-php-ext-install mbstring
+RUN docker-php-ext-install mysqli
+RUN docker-php-ext-install opcache
+RUN docker-php-ext-install pdo
+RUN docker-php-ext-install pdo_mysql
 
 # wp-cli
 RUN curl -o /usr/bin/original_wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
