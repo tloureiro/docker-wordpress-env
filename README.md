@@ -1,3 +1,9 @@
+# to build the image
+
+```
+docker build -t wordpress-env --no-cache .
+```
+
 # vscode xdebug config
 
 ```json
