@@ -1,7 +1,7 @@
 FROM php:7-apache
 
 RUN apt-get update
-RUN apt-get install -y ssl-cert nano default-mysql-client libonig-dev less
+RUN apt-get install -y ssl-cert nano default-mysql-client libonig-dev less libzip-dev zip
 
 RUN a2enmod ssl rewrite
 
@@ -11,6 +11,7 @@ RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install opcache
 RUN docker-php-ext-install pdo
 RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install zip
 
 # wp-cli
 RUN curl -o /usr/bin/original_wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
