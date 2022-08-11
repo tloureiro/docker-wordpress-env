@@ -1,17 +1,15 @@
-FROM php:7-apache
+FROM php:8-apache
 
 RUN apt-get update
-RUN apt-get install -y ssl-cert nano default-mysql-client libonig-dev less libzip-dev zip
+RUN apt-get install -y ssl-cert nano default-mysql-client libonig-dev less libzip-dev zip libpng-dev imagemagick libmagickwand-dev libmagickcore-dev
+
+RUN pecl install imagick
 
 RUN a2enmod ssl rewrite
 
 RUN make-ssl-cert generate-default-snakeoil --force-overwrite
-RUN docker-php-ext-install mbstring
-RUN docker-php-ext-install mysqli
-RUN docker-php-ext-install opcache
-RUN docker-php-ext-install pdo
-RUN docker-php-ext-install pdo_mysql
-RUN docker-php-ext-install zip
+RUN docker-php-ext-install mbstring mysqli opcache pdo pdo_mysql zip gd
+RUN docker-php-ext-enable imagick
 
 # wp-cli
 RUN curl -o /usr/bin/original_wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
