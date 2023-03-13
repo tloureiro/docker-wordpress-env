@@ -8,7 +8,8 @@ RUN pecl install imagick
 RUN a2enmod ssl rewrite
 
 RUN make-ssl-cert generate-default-snakeoil --force-overwrite
-RUN docker-php-ext-install mbstring mysqli opcache pdo pdo_mysql zip gd
+RUN docker-php-ext-configure intl
+RUN docker-php-ext-install mbstring mysqli opcache pdo pdo_mysql zip gd intl
 RUN docker-php-ext-enable imagick
 
 # wp-cli
